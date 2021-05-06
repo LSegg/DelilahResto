@@ -1,0 +1,76 @@
+openapi: "3.0.2"
+info:
+  title: "Delilah Resto API"
+  description: "Online Restaurant API system using blablah" #COMPLETAR UNA VEZ TERMINADO, la documentación sugiere: CommonMark syntax MAY be used for rich text representation.
+  version: "1.0.0"
+
+servers:
+  - url: "http://testing.delilahresto.com"
+    description: "Basic testing scenario"
+  - url: "http://api.delilahresto.com"
+    description: "Production testing scenario"
+
+paths:
+  /menu:
+    get:
+      summary: "Get all menu items"
+      description: "This method on above URL returns all the items available in the database in JSON format"
+      responses:
+        200:
+          description: "Request has succeeded."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/menu"
+    post:
+      summary: "Create a new menu item"
+      description: "This method posts a new menu item and accept application/JSON format for the operation with 'name', 'price', 'stock' and 'itemId' as the required parameters for the JSON."
+      responses:
+        201:
+          description: "Request has succeeded and a new menu item has been created as a result."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/menuItem"
+    put:
+      summary: "Modify a menu item"
+      description: "This method modifies an existing menu item and accept application/JSON format for the operation with the parameters to modify required for the JSON."
+      responses:
+        200:
+          description: "Request has succeeded."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/menuItem"
+    delete:
+      summary: "Modify a menu item"
+      description: "This method deletes the given menu item if the item_id exists."
+      responses:
+        200:
+          description: "Request has succeeded."
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/menu"
+        # ¿Qué respuesta debería dar si no es válido el ID??
+
+components:
+  schemas:
+    menu:
+      type: array
+      items:
+        $ref: "#/components/schemas/menuItem"
+    menuItem:
+      type: object
+      properties:
+        name:
+          type: string
+        price:
+          type: number
+        stock:
+          type: integer #Teniendo en cuenta que uso JavaScript, ¿¿debería poner number??
+        itemId:
+          type: string
+
+security: #completar
+
