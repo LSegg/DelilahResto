@@ -1,21 +1,33 @@
-openapi: "3.0.2"
+openapi: '3.0.2'
 info:
   title: "Delilah Resto API"
-  description: "Online Restaurant API system using blablah" #COMPLETAR UNA VEZ TERMINADO, la documentación sugiere: CommonMark syntax MAY be used for rich text representation.
+  description: "Online Restaurant RESTful API"
   version: "1.0.0"
-
 servers:
   - url: "http://testing.delilahresto.com"
     description: "Basic testing scenario"
   - url: "http://api.delilahresto.com"
     description: "Production testing scenario"
-
 paths:
-  /menu:
+  /products:
     get:
-      summary: "Get all menu items"
-      description: "This method on above URL returns all the items available in the database in JSON format"
+      tags: 
+      - products
+      operationId: getAvailableProducts
+      summary: "Get all products"
+      description: "It returns all the products available in the database in JSON format"
       responses:
+        500:
+          description: "Internal server error."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    enum:
+                      - An internal server error ocurred, please try again later.
         200:
           description: "Request has succeeded."
           content:
@@ -52,8 +64,25 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/menu"
-        # ¿Qué respuesta debería dar si no es válido el ID??
-
+  /teapot:
+    get:
+      tags: 
+      - teapot
+      operationId: getTeapot
+      summary: "Get Teapot"
+      description: "It returns all the products available in the database in JSON format"
+      responses:
+        418:
+          description: "I'm a teapot."
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    enum:
+                      - We cannot brew coffee since we are teapots.
 components:
   schemas:
     menu:
@@ -68,9 +97,6 @@ components:
         price:
           type: number
         stock:
-          type: integer #Teniendo en cuenta que uso JavaScript, ¿¿debería poner number??
+          type: integer
         itemId:
           type: string
-
-security: #completar
-
