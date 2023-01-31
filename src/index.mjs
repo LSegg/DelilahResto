@@ -1,17 +1,37 @@
 import { ENV } from "./config/env.mjs";
 import express from "express";
+const Product = require("./models/product.mjs");
 
-const delilahAPI = express();
+const app = express();
 const port = ENV.SERVER_PORT || 3000;
 
-delilahAPI.get("/products", (req, res) => {
-  res.send("Hello World!");
+app.get("/products/:id", (req, res) => {
+  const { id } = req.params;
+  res.send(`Product ${id} found!!`);
 });
 
-delilahAPI.get("/teapots", (req, res) => {
-  res.send({ message: "We cannot brew coffee since we are teapots." });
+app.put("/products/:id", (req, res) => {
+  const { id } = req.params;
+  res.send(`Product ${id} updated!!`);
 });
 
-delilahAPI.listen(port, () => {
+app.delete("/products/:id", (req, res) => {
+  const { id } = req.params;
+  res.send(`Product ${id} deleted!!`);
+});
+
+app.get("/products", (req, res) => {
+  res.send("Products found!");
+});
+
+app.post("/products", (req, res) => {
+  res.send("Product created!");
+});
+
+app.get("/teapots", (req, res) => {
+  res.send({ message: "I cannot brew coffee since I'm a teapot." });
+});
+
+app.listen(port, () => {
   console.log(`Delilah Resto Server listening on port ${port}`);
 });

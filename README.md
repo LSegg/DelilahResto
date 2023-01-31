@@ -18,10 +18,15 @@ This is the third project from the Web Full Stack Development intensive programm
 
 ## Features 📋
 
+- Full CRUD for products
 - Model View Controller Architecture
 - Test driven development
 
 ## Requirements ⚙️
+
+- A text editor like [Visual Studio Code](https://code.visualstudio.com/).
+- A development local server such as [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer).
+- A testing application like [Postman](https://www.postman.com/) is not neccesary but it is recommended for server-side request testing.
 
 ## License 📄
 
