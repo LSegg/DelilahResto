@@ -15,6 +15,7 @@ This is the third project from the Web Full Stack Development intensive programm
 - [JavaScript](https://sass-lang.com/install) - Programming language.
 - [Jest](https://jestjs.io/) - JavaScript Testing Framework.
 - [Node.js](https://nodejs.org/en/) - JavaScript runtime.
+- [Postman](https://www.postman.com/) - Application to test web APIs.
 
 ## Features 📋
 

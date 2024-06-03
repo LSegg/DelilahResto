@@ -3,12 +3,27 @@ info:
   title: "Delilah Resto API"
   description: "Online Restaurant RESTful API"
   version: "1.0.0"
+  license:
+    name: "MIT License"
 servers:
   - url: "http://testing.delilahresto.com"
     description: "Basic testing scenario"
   - url: "http://api.delilahresto.com"
     description: "Production testing scenario"
 paths:
+  /login:
+    post:
+      tags:
+      - login
+      operationId: login
+      summary: "Login to user account"
+      description: "Allows an user to log into their account if they are a registered user"
+      responses:
+        "200":
+          description: "Request sucessful"
+        "401":
+          description: "Unauthorized"
+      security: []
   /products:
     get:
       tags: 
@@ -64,6 +79,8 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/menu"
+  /signup:
+    summary: "Create a new user"
   /teapot:
     get:
       tags: 
